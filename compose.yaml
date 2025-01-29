@@ -1,0 +1,31 @@
+services:
+  kafka:
+    build:
+      context: .
+      dockerfile: ./docker/kafka/Dockerfile
+    container_name: kafka
+    ports:
+      - "9094:9094"
+    environment:
+      KAFKA_CFG_NODE_ID: 0
+      KAFKA_CFG_CONTROLLER_BROKER_ID: 0
+      KAFKA_CFG_PROCESS_ROLES: "broker,controller"
+      KAFKA_CFG_INTER_BROKER_LISTENER_NAME: "INTERNAL"
+      KAFKA_CFG_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
+      KAFKA_CFG_LISTENERS: "INTERNAL://kafka:9092,CONTROLLER://kafka:9093,EXTERNAL://0.0.0.0:9094"
+      KAFKA_CFG_ADVERTISED_LISTENERS: "INTERNAL://kafka:9092,EXTERNAL://localhost:9094"
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: "CONTROLLER:PLAINTEXT,INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT"
+      KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: "0@kafka:9093"
+      KAFKA_CFG_LOG_DIRS: "/tmp/log/kafka"
+      KAFKA_CFG_LOG_RETENTION_HOURS: "24"
+
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui
+    ports:
+      - "8080:8080"
+    depends_on:
+      - kafka
+    environment:
+      KAFKA_CLUSTERS_0_NAME: "local"
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: "kafka:9092"
