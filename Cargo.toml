@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-rdkafka = "0.37.0"
+anyhow = "1.0.95"
+rdkafka = { version = "0.37.0", features = ["cmake-build"] }
 tokio = { version = "1.43.0", features = ["full"] }
 uuid = { version = "1.12.1", features = ["v4"] }
