@@ -2,6 +2,7 @@ FROM bitnami/kafka:3.9.0
 
 WORKDIR /opt/bitnami/kafka
 
+# Create a cluster ID
 RUN bin/kafka-storage.sh random-uuid > /tmp/CLUSTER_ID && \
     export KAFKA_KRAFT_CLUSTER_ID=$(cat /tmp/CLUSTER_ID) && \
     bin/kafka-storage.sh format -t "$KAFKA_KRAFT_CLUSTER_ID" -c ./config/kraft/server.properties
