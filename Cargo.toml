@@ -7,4 +7,6 @@ edition = "2021"
 anyhow = "1.0.95"
 rdkafka = { version = "0.37.0", features = ["cmake-build"] }
 tokio = { version = "1.43.0", features = ["full"] }
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }
 uuid = { version = "1.12.1", features = ["v4"] }
