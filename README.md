@@ -3,7 +3,7 @@
 A simple chat application in Rust using Kafka as a message broker.
 This is a simple example of how to use Kafka using the [rdkafka](https://github.com/fede1024/rust-rdkafka) crate.
 
-![Demo](https://github.com/user-attachments/assets/2dd5feab-de3b-49fc-a211-91ca108df0e5)
+https://github.com/user-attachments/assets/ab3c1f32-d900-47e5-9c3c-959bd790a053
 
 ## How to run
 
